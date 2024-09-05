@@ -16,5 +16,5 @@ var merge = function (nums1, m, nums2, n) {
     }
     return nums1
 };
-const nums1 = [1], m = 1, nums2 = [], n = 0  // [1,2,2,3,5,6]
+const nums1 = [1], m = 1, nums2 = [], n = 0
 console.log(merge(nums1, m, nums2, n));
