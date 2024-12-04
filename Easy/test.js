@@ -1,14 +1,37 @@
-let obj = {}
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var minDiffInBST = function(root) {
+    const INFINITY = Number.MAX_SAFE_INTEGER
+    let minDifference = INFINITY
+    let prevValue = -INFINITY
 
-function sum(){
-    obj.num1 = 10
-    obj.num2 = 20
-    return sum2()
-}
+    inOrder(root)
 
-function sum2(){
-   return obj.num1 + obj.num2
-}
+    function inOrder(node){
+        if(!node) return
 
-console.log(sum())
+        inOrder(node.left)
 
+        if(prevValue !== -INFINITY){
+            minDifference = Math.min(minDifference, Math.abs(node.val - prevValue))
+        }
+
+        prevValue = node.val
+
+        inOrder(node.right)
+    }
+    return minDifference
+};
+
+const root = [4,2,6,1,3]
+console.log(minDiffInBST(root))
